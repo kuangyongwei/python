@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    添加店铺
+{% endblock %}
+
+{% block header1_js %}
+    <script src="https://cdn.staticfile.org/Plupload/2.1.1/moxie.js"></script>
+    <script src="https://cdn.staticfile.org/Plupload/2.1.1/plupload.dev.js"></script>
+    <script src="https://cdn.staticfile.org/qiniu-js-sdk/1.0.14-beta/qiniu.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename="js/itqiniu.js") }}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="page-header">
+                <h3 class="text-center">添加店铺信息</h3>
+            </div>
+            <form class="form-horizontal" method="post" action="" novalidate>
+                {% for item in form %}
+                    {% if item.id=="image-input" %}
+                        <div class="form-group">
+                            {{ item.label(class_="col-sm-2 control-label") }}
+                            <div class="col-sm-3">
+                                <button id="upload-btn">上传图片</button>
+                            </div>
+                            <div class="col-sm-10">
+                                {{ item }}
+                                <img src="" alt="" id="image" width="50px">
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="form-group">
+                            {{ item.label(class_="col-sm-2 control-label") }}
+                            <div class="col-sm-10">
+                                {{ item }}
+                                <span class="text-danger">{{ item.errors[0] }}</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">登陆</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block footer_jq %}
+    <script>
+        window.onload = function () {
+            itqiniu.setUp({
+                'domain': 'http://peq95l33f.bkt.clouddn.com/',
+                'browse_btn': 'upload-btn',
+                'uptoken_url': "/cms/generate_uptoken/",
+                'success': function (up, file, info) {
+                    var image_url = file.name;
+                    var image_input = document.getElementById('image-input');
+                    image_input.value = image_url;
+                    var img = document.getElementById('image');
+                    img.setAttribute('src', image_url);
+                },
+            });
+        };
+    </script>
+{% endblock %}

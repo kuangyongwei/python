@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="elm2.sqlite">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.8">
+    <root id="1">
+      <ServerVersion>3.16.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="alembic_version"/>
+    <table id="7" parent="2" name="buyer_address_model"/>
+    <table id="8" parent="2" name="buyer_user"/>
+    <table id="9" parent="2" name="menu_category"/>
+    <table id="10" parent="2" name="menu_food"/>
+    <table id="11" parent="2" name="order_goods"/>
+    <table id="12" parent="2" name="order_info"/>
+    <table id="13" parent="2" name="seller_login_model"/>
+    <table id="14" parent="2" name="seller_shop"/>
+    <table id="15" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <column id="16" parent="6" name="version_num">
+      <Position>1</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="17" parent="6" name="sqlite_autoindex_alembic_version_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>version_num</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="18" parent="6" name="alembic_version_pkc">
+      <ColNames>version_num</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_alembic_version_1</UnderlyingIndexName>
+    </key>
+    <column id="19" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="7" name="user_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="21" parent="7" name="provence">
+      <Position>3</Position>
+      <DataType>VARCHAR(8)|0s</DataType>
+    </column>
+    <column id="22" parent="7" name="city">
+      <Position>4</Position>
+      <DataType>VARCHAR(16)|0s</DataType>
+    </column>
+    <column id="23" parent="7" name="area">
+      <Position>5</Position>
+      <DataType>VARCHAR(16)|0s</DataType>
+    </column>
+    <column id="24" parent="7" name="detail_address">
+      <Position>6</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+    </column>
+    <column id="25" parent="7" name="name">
+      <Position>7</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="26" parent="7" name="tel">
+      <Position>8</Position>
+      <DataType>VARCHAR(16)|0s</DataType>
+    </column>
+    <key id="27" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="28" parent="7">
+      <ColNames>user_id</ColNames>
+      <RefTableName>buyer_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="29" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="8" name="username">
+      <Position>2</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="31" parent="8" name="password">
+      <Position>3</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="32" parent="8" name="tel">
+      <Position>4</Position>
+      <DataType>VARCHAR(16)|0s</DataType>
+    </column>
+    <index id="33" parent="8" name="sqlite_autoindex_buyer_user_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="34" parent="8" name="sqlite_autoindex_buyer_user_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>tel</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="35" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="36" parent="8">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_buyer_user_2</UnderlyingIndexName>
+    </key>
+    <key id="37" parent="8">
+      <ColNames>tel</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_buyer_user_1</UnderlyingIndexName>
+    </key>
+    <column id="38" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="9" name="pub_id">
+      <Position>2</Position>
+      <DataType>VARCHAR(16)|0s</DataType>
+    </column>
+    <column id="40" parent="9" name="name">
+      <Position>3</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="41" parent="9" name="description">
+      <Position>4</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="42" parent="9" name="type_accumulation">
+      <Position>5</Position>
+      <DataType>VARCHAR(16)|0s</DataType>
+    </column>
+    <column id="43" parent="9" name="is_default">
+      <Position>6</Position>
+      <DataType>BOOLEAN|0s</DataType>
+    </column>
+    <column id="44" parent="9" name="shop_id">
+      <Position>7</Position>
+      <DataType>VARCHAR(16)|0s</DataType>
+    </column>
+    <key id="45" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="46" parent="9">
+      <ColNames>shop_id</ColNames>
+      <RefTableName>seller_shop</RefTableName>
+      <RefColNames>pub_id</RefColNames>
+    </foreign-key>
+    <check id="47" parent="9">
+      <Predicate>is_default IN (0, 1)</Predicate>
+    </check>
+    <column id="48" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="10" name="goods_id">
+      <Position>2</Position>
+      <DataType>VARCHAR(8)|0s</DataType>
+    </column>
+    <column id="50" parent="10" name="goods_name">
+      <Position>3</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+    </column>
+    <column id="51" parent="10" name="rating">
+      <Position>4</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="52" parent="10" name="shop_id">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="53" parent="10" name="category_id">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="54" parent="10" name="goods_price">
+      <Position>7</Position>
+      <DataType>DECIMAL(6,2 digit)|0s</DataType>
+    </column>
+    <column id="55" parent="10" name="description">
+      <Position>8</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="56" parent="10" name="month_sales">
+      <Position>9</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="57" parent="10" name="rating_count">
+      <Position>10</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="58" parent="10" name="tips">
+      <Position>11</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="59" parent="10" name="goods_img">
+      <Position>12</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <key id="60" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="10">
+      <ColNames>shop_id</ColNames>
+      <RefTableName>seller_shop</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="62" parent="10">
+      <ColNames>category_id</ColNames>
+      <RefTableName>menu_category</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="63" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="11" name="order_id">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="65" parent="11" name="goods_id">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="66" parent="11" name="goods_name">
+      <Position>4</Position>
+      <DataType>VARCHAR(64)|0s</DataType>
+    </column>
+    <column id="67" parent="11" name="goods_image">
+      <Position>5</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="68" parent="11" name="goods_price">
+      <Position>6</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="69" parent="11" name="amount">
+      <Position>7</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <key id="70" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="71" parent="11">
+      <ColNames>order_id</ColNames>
+      <RefTableName>order_info</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="72" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="12" name="order_code">
+      <Position>2</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="74" parent="12" name="shop_id">
+      <Position>3</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="75" parent="12" name="user_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="76" parent="12" name="order_address">
+      <Position>5</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="77" parent="12" name="order_price">
+      <Position>6</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="78" parent="12" name="order_status">
+      <Position>7</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="79" parent="12" name="created_time">
+      <Position>8</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <column id="80" parent="12" name="trade_sn">
+      <Position>9</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <index id="81" parent="12" name="sqlite_autoindex_order_info_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>order_code</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="82" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="83" parent="12">
+      <ColNames>order_code</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_order_info_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="84" parent="12">
+      <ColNames>shop_id</ColNames>
+      <RefTableName>seller_shop</RefTableName>
+      <RefColNames>pub_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="85" parent="12">
+      <ColNames>user_id</ColNames>
+      <RefTableName>buyer_user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="86" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="13" name="seller_phone">
+      <Position>2</Position>
+      <DataType>VARCHAR(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="88" parent="13" name="password">
+      <Position>3</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <index id="89" parent="13" name="sqlite_autoindex_seller_login_model_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>seller_phone</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="90" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="91" parent="13">
+      <ColNames>seller_phone</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_seller_login_model_1</UnderlyingIndexName>
+    </key>
+    <column id="92" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="14" name="pub_id">
+      <Position>2</Position>
+      <DataType>VARCHAR(16)|0s</DataType>
+    </column>
+    <column id="94" parent="14" name="shop_name">
+      <Position>3</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="95" parent="14" name="shop_img">
+      <Position>4</Position>
+      <DataType>VARCHAR(128)|0s</DataType>
+    </column>
+    <column id="96" parent="14" name="shop_rating">
+      <Position>5</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="97" parent="14" name="brand">
+      <Position>6</Position>
+      <DataType>BOOLEAN|0s</DataType>
+    </column>
+    <column id="98" parent="14" name="on_time">
+      <Position>7</Position>
+      <DataType>BOOLEAN|0s</DataType>
+    </column>
+    <column id="99" parent="14" name="fengniao">
+      <Position>8</Position>
+      <DataType>BOOLEAN|0s</DataType>
+    </column>
+    <column id="100" parent="14" name="bao">
+      <Position>9</Position>
+      <DataType>BOOLEAN|0s</DataType>
+    </column>
+    <column id="101" parent="14" name="piao">
+      <Position>10</Position>
+      <DataType>BOOLEAN|0s</DataType>
+    </column>
+    <column id="102" parent="14" name="zhun">
+      <Position>11</Position>
+      <DataType>BOOLEAN|0s</DataType>
+    </column>
+    <column id="103" parent="14" name="start_send">
+      <Position>12</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="104" parent="14" name="send_cost">
+      <Position>13</Position>
+      <DataType>FLOAT|0s</DataType>
+    </column>
+    <column id="105" parent="14" name="notice">
+      <Position>14</Position>
+      <DataType>VARCHAR(210)|0s</DataType>
+    </column>
+    <column id="106" parent="14" name="discount">
+      <Position>15</Position>
+      <DataType>VARCHAR(210)|0s</DataType>
+    </column>
+    <column id="107" parent="14" name="seller_pid">
+      <Position>16</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <index id="108" parent="14" name="ix_seller_shop_pub_id">
+      <ColNames>pub_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="109" parent="14" name="sqlite_autoindex_seller_shop_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>shop_name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="110" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="111" parent="14">
+      <ColNames>shop_name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_seller_shop_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="112" parent="14">
+      <ColNames>seller_pid</ColNames>
+      <RefTableName>seller_login_model</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <check id="113" parent="14">
+      <Predicate>bao IN (0, 1)</Predicate>
+    </check>
+    <check id="114" parent="14">
+      <Predicate>brand IN (0, 1)</Predicate>
+    </check>
+    <check id="115" parent="14">
+      <Predicate>fengniao IN (0, 1)</Predicate>
+    </check>
+    <check id="116" parent="14">
+      <Predicate>on_time IN (0, 1)</Predicate>
+    </check>
+    <check id="117" parent="14">
+      <Predicate>piao IN (0, 1)</Predicate>
+    </check>
+    <check id="118" parent="14">
+      <Predicate>zhun IN (0, 1)</Predicate>
+    </check>
+    <column id="119" parent="15" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="120" parent="15" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="121" parent="15" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="122" parent="15" name="rootpage">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="123" parent="15" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+  </database-model>
+</dataSource>

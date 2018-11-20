@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    个人中心
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">饿了么商家管理系统</h1>
+        <hr>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong class="text-danger">{{ current_user.seller_phone }}</strong> 的店铺：
+            </div>
+            <table class="table table-hover">
+
+                {% if stores %}
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>菜品分类名</th>
+                        <th>菜品分类描述</th>
+                        <th>菜品分类编号</th>
+                        <th>是否默认</th>
+                        <th>菜品信息</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for store in stores %}
+                        <tr>
+                            <th>{{ loop.index }}</th>
+                            <th>
+                                <a href="{{ url_for("cms.update_category",shop_id=shop_id ,pub_id=store.pub_id) }}">{{ store.name }}</a>
+                            </th>
+                            <th>{{ store.description }}</th>
+                            <th>{{ store.type_accumulation }}</th>
+                            <th>{{ store.is_default }}</th>
+                            <th>
+                                <a href="
+{{ url_for("cms.add_food",shop_id=shop_true_id) }}
+">添加</a>
+                                &nbsp;&nbsp;
+                                <a href="
+{{ url_for("cms.show_food",shop_id=shop_true_id) }}
+">查看</a>
+                            </th>
+                        </tr>
+                        {#                        {{ store.pub_id }}#}
+                    {% endfor %}
+                    </tbody>
+                {% else %}
+                    <div><a href="{{ url_for('cms.add_shop') }}"><h3 style="color: red">还没有菜品分类呢，赶快添加一个吧...</h3></a>
+                    </div>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

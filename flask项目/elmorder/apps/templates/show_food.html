@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    个人中心
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">饿了么商家管理系统</h1>
+        <hr>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong class="text-danger">{{ current_user.seller_phone }}</strong> 的店铺：
+            </div>
+            <table class="table table-hover">
+
+                {% if foods_list %}
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>菜品名称</th>
+                        <th>菜品价格</th>
+                        <th>菜品描述</th>
+                        <th>提示信息</th>
+                        <th>菜品图片</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for food in foods_list %}
+                        <tr>
+                            <th>{{ loop.index }}</th>
+                            <th>
+                                <a href="{{ url_for("cms.update_food",food_id=food.id) }}">{{ food.goods_name }}</a>
+                            </th>
+                            <th>{{ food.goods_price }}</th>
+                            <th>{{ food.description }}</th>
+                            <th>{{ food.tips }}</th>
+                            <th>{{ food.goods_img }}</th>
+
+                        </tr>
+                        {#                        {{ store.pub_id }}#}
+                    {% endfor %}
+                    </tbody>
+                {% else %}
+                    <div><a href="{{ url_for('cms.add_shop') }}"><h3 style="color: red">还没有菜品呢，赶快添加一个吧...</h3></a>
+                    </div>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
